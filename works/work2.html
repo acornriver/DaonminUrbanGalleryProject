@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>바람이 지나간 자리 - 도시 속에서 잊혀져가는 것들</title>
+  <title>슈크림도어가 닫힙니다 - 도시 속에서 잊혀져가는 것들</title>
   <style>
     html {
       scroll-behavior: smooth;
@@ -70,12 +70,17 @@
     }
     .map-container {
       margin: 2rem 0;
-    }
-    .map-container iframe {
       width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 8px;
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 비율 유지 */
+      height: 0;
+    }
+    .map-container > div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
     }
     #disqus_thread {
       margin-top: 4rem;
@@ -124,27 +129,30 @@
 </header>
 
 <div class="content">
-  <h2>바람이 지나간 자리</h2>
-  <p>"바람이 머물던 흔적이 벽에 남았다."</p>
+  <h2>슈크림도어가 닫힙니다</h2>
+  <p>"풀이 열심히 끼어난 채로 자라나고 있다."<br>- 계원예대 정문 버스정류장 맞은편</p>
 
   <div class="image-container">
     <div class="image-scroll">
       <img src="../assets/work1-1.png" alt="설치 사진 1">
-      <img src="../assets/work1-2.png" alt="설치 사진 2">
-      <img src="../assets/work1-3.png" alt="설치 사진 3">
+      <img src="../assets/work2-2.png" alt="설치 사진 2">
+      <img src="../assets/work2-3.png" alt="설치 사진 3">
     </div>
   </div>
 
   <div class="map-container">
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.4737564886864!2d126.97572687608032!3d37.378626972087915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b5fd3a22f1807%3A0x9bc35489a1c1e763!2z6rOE7JuQ7JiI7Iig64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1745736687133!5m2!1sko!2skr" 
-      width="100%" 
-      height="300" 
-      style="border:0;" 
-      allowfullscreen="" 
-      loading="lazy" 
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
+    <!-- 카카오맵 - 퍼가기 -->
+    <div id="daumRoughmapContainer1745766713746" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+
+    <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+    <script charset="UTF-8">
+      new daum.roughmap.Lander({
+        "timestamp" : "1745766713746",
+        "key" : "2nudw",
+        "mapWidth" : "100%",
+        "mapHeight" : "100%"
+      }).render();
+    </script>
   </div>
 
   <div id="disqus_thread"></div>
