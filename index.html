@@ -11,30 +11,34 @@
       padding: 0;
       background-color: #ffffff;
       color: #333333;
+      line-height: 1.6;
     }
     header {
       background-color: #f7f7f7;
-      padding: 2rem;
+      padding: 2rem 1rem;
       text-align: center;
       border-bottom: 1px solid #e0e0e0;
     }
     header h1 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       margin: 0;
+      word-break: keep-all;
     }
     header p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       margin-top: 0.5rem;
       color: #666666;
+      word-break: keep-all;
     }
     nav {
       margin-top: 1rem;
     }
     nav a {
-      margin: 0 1rem;
+      margin: 0 0.5rem;
       text-decoration: none;
       color: #555555;
       font-weight: 500;
+      font-size: 1rem;
     }
     nav a:hover {
       color: #000000;
@@ -46,21 +50,24 @@
       padding: 1rem;
       font-size: 0.9rem;
       border-bottom: 1px solid #e0e0e0;
+      word-break: keep-all;
     }
     section {
-      padding: 3rem 2rem;
+      padding: 2rem 1rem;
       max-width: 800px;
       margin: auto;
     }
     section h2 {
-      font-size: 2rem;
+      font-size: 1.8rem;
       margin-bottom: 1rem;
       border-bottom: 2px solid #dddddd;
       padding-bottom: 0.5rem;
+      word-break: keep-all;
     }
     ul {
       list-style: none;
       padding: 0;
+      margin: 0;
     }
     ul li {
       margin-bottom: 1rem;
@@ -69,6 +76,7 @@
       text-decoration: none;
       color: #0066cc;
       font-size: 1.1rem;
+      word-break: keep-all;
     }
     ul li a:hover {
       text-decoration: underline;
@@ -80,49 +88,92 @@
       color: #999999;
       border-top: 1px solid #e0e0e0;
     }
+    /* 모바일 대응 */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      nav a {
+        font-size: 0.9rem;
+      }
+      section h2 {
+        font-size: 1.5rem;
+      }
+      ul li a {
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>도시 속에서 잊혀져가는 것들</h1>
-    <p>일상의 사소한 풍경을 기록하는 거리 예술 프로젝트</p>
-    <nav>
-      <a href="#works">작품 리스트</a>
-      <a href="#about">소개</a>
-    </nav>
-  </header>
+<header>
+  <h1>도시 속에서 잊혀져가는 것들</h1>
+  <p>일상의 사소한 풍경을 기록하는 거리 예술 프로젝트</p>
+  <nav>
+    <a href="#works">작품 리스트</a>
+    <a href="#about">소개</a>
+    <a href="#artist">작가 소개</a>
+  </nav>
+</header>
 
-  <div class="notice">
-    🗓️ 이 작품들은 2025년 5월 10일에 설치되어, 2025년 5월 17일에 자진 철거 예정입니다.<br>
-    이 설치물로 인해 불편을 끼쳐 드린다면 아래 연락처로 연락주시면 즉시 조치하겠습니다
-  </div>
+<div class="notice">
+  🗓️ 이 웹사이트는 2025년 5월 전시 기간 동안 운영되고 있습니다.<br>
+  작품 캡션은 전시 기간 동안만 부착되며, 기간 종료 후 자진 철거될 예정입니다.<br>
+  문제가 발생하거나 철거 요청이 필요한 경우, 연락 주시면 신속히 조치하겠습니다.<br>
+  (Contact: minhyuk@acornriver.work)
+</div>
 
-  <section id="works">
-    <h2>작품 리스트</h2>
-    <ul>
-      <li><a href="works/work1.html">바람이 지나간 자리</a></li>
-      <li><a href="works/work2.html">멈춘 시간</a></li>
-      <li><a href="works/work3.html">기다림의 흔적</a></li>
-      <li><a href="works/work4.html">사라지는 빛</a></li>
-      <li><a href="works/work5.html">숨겨진 길</a></li>
-      <li><a href="works/work6.html">남겨진 목소리</a></li>
-      <li><a href="works/work7.html">깨진 유리</a></li>
-      <li><a href="works/work8.html">잊혀진 문</a></li>
-      <li><a href="works/work9.html">구겨진 벽</a></li>
-      <li><a href="works/work10.html">흘러간 꿈</a></li>
-    </ul>
-  </section>
+<section id="works">
+  <h2>작품 리스트</h2>
+  <ul>
+    <li><a href="works/work1.html">바람이 지나간 자리</a></li>
+    <li><a href="works/work2.html">멈춘 시간</a></li>
+    <li><a href="works/work3.html">기다림의 흔적</a></li>
+    <li><a href="works/work4.html">사라지는 빛</a></li>
+    <li><a href="works/work5.html">숨겨진 길</a></li>
+    <li><a href="works/work6.html">남겨진 목소리</a></li>
+    <li><a href="works/work7.html">깨진 유리</a></li>
+    <li><a href="works/work8.html">잊혀진 문</a></li>
+    <li><a href="works/work9.html">구겨진 벽</a></li>
+    <li><a href="works/work10.html">흘러간 꿈</a></li>
+  </ul>
+</section>
 
-  <section id="about">
-    <h2>소개</h2>
-    <p><strong>도시 속에서 잊혀져가는 것들</strong>은 일상의 공간과 물건들을 재발견하고 기록하는 프로젝트입니다. 사소한 것들 속에 남은 흔적을 찾아 캡션을 붙이고, 순간을 예술로 남기는 거리 예술 실험입니다.</p>
-    <p>Contact: minhyuk@acornriver.work</p>
-  </section>
+<section id="about">
+  <h2>소개</h2>
+  <p><strong>도시 속에서 잊혀져가는 것들</strong>은 우리가 매일 걷고 지나치는 거리, 골목, 벽과 같은 공간을 다시 바라보는 프로젝트입니다. 빠르게 변하는 일상 속에서 무심코 지나치는 장면들, 작은 균열, 희미해진 표식들 — 우리는 그것들을 알아차리지 못한 채 살아갑니다.</p>
 
-  <footer>
-    <p>&copy; 2025 도시 속에서 잊혀져가는 것들 Project</p>
-  </footer>
+  <p>이 프로젝트는 그런 사소한 흔적들을 발견하고, 그 위에 '작품'이라는 이름을 붙여 일상과 예술의 경계를 허물고자 합니다. 각기 다른 도시의 벽과 바닥에 설치된 작은 캡션들은, 평범한 풍경을 잠시 멈춰 서서 바라보게 만드는 작은 장치입니다.</p>
+
+  <p>이 작업은 "예술은 꼭 특별한 공간에만 존재해야 하는가?"라는 질문에서 시작되었습니다. 예술은 갤러리나 박물관 안에서만 머물지 않아도 됩니다. 때로는 한낮의 볕에 바랜 담벼락에서도, 금이 간 인도의 틈에서도, 세상의 아름다움과 의미는 조용히 피어납니다.</p>
+
+  <p><strong>도시 속에서 잊혀져가는 것들</strong>은 그런 일상의 사소한 것들에게 새로운 이름과 이야기를 부여하는 시도입니다. 관객은 작품을 보는 동시에, 자신만의 기억과 풍경을 떠올리게 될 것입니다.</p>
+
+  <p><strong>2025년 5월</strong>, 이 작은 프로젝트가 지나간 자리마다, 한 순간이라도 새로운 시선이 머물 수 있기를 바랍니다.</p>
+</section>
+
+<section id="artist">
+  <h2>작가 소개</h2>
+
+  <p><strong>미녁(아콘리버)</strong></p>
+  <p>삶 속에서 스쳐 지나가는 사소한 것들을 바라봅니다.<br>
+  무심코 지나쳤던 공간과 풍경에 주목하며, 일상을 새롭게 기록하는 작업을 합니다.<br>
+  이번 프로젝트에서는 "작품은 특별한 공간에만 존재해야 하는가?"라는 질문을 던지며, 거리의 사소한 벽과 바닥에 캡션을 붙이는 시도를 했습니다.</p>
+
+  <p><strong>다온</strong></p>
+  <p>익숙한 일상 속에서 특별한 순간을 찾아내려 합니다.<br>
+  소소한 장면 속에 숨겨진 이야기를 발견하고, 그것을 새롭게 바라보는 작업을 이어가고 있습니다.<br>
+  이번 전시에서는 도시의 풍경 속에 깃든 작은 흔적들과 대화를 시도했습니다.</p>
+
+</section>
+
+<footer>
+  <p>&copy; 2025 도시 속에서 잊혀져가는 것들 Project</p>
+</footer>
 
 </body>
 </html>
