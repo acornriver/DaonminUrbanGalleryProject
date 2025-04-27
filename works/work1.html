@@ -5,22 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>바람이 지나간 자리 - 도시 속에서 잊혀져가는 것들</title>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Noto Sans', sans-serif;
       margin: 0;
       padding: 0;
       background-color: #ffffff;
       color: #333333;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+    body.loaded {
+      opacity: 1;
     }
     header {
       background-color: #f7f7f7;
-      padding: 2rem;
+      padding: 2rem 1rem;
       text-align: center;
       border-bottom: 1px solid #e0e0e0;
     }
     header h1 {
       font-size: 2.5rem;
       margin: 0;
+      word-break: keep-all;
     }
     .content {
       max-width: 800px;
@@ -32,11 +41,13 @@
       margin-bottom: 1rem;
       border-bottom: 2px solid #dddddd;
       padding-bottom: 0.5rem;
+      word-break: keep-all;
     }
     .content p {
       font-size: 1.1rem;
       line-height: 1.6;
       margin: 0.5rem 0 1.5rem 0;
+      word-break: keep-all;
     }
     .image-container {
       margin: 2rem 0;
@@ -46,13 +57,16 @@
     .image-scroll {
       display: flex;
       gap: 1rem;
+      scroll-snap-type: x mandatory;
+      overflow-x: auto;
     }
     .image-scroll img {
       flex: 0 0 auto;
       height: auto;
-      max-height: 300px; /* 세로 최대 300px까지만, 비율 유지 */
+      max-height: 300px;
       border-radius: 8px;
       border: 1px solid #e0e0e0;
+      scroll-snap-align: start;
     }
     .map-container {
       margin: 2rem 0;
@@ -77,67 +91,91 @@
       text-decoration: underline;
     }
     footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #999999;
-      border-top: 1px solid #e0e0e0;
-      margin-top: 5rem;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  font-size: 0.9rem;
+  color: #999999;
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 5rem;
+  line-height: 1.7;
+
+    }
+    /* 모바일 대응 */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .content h2 {
+        font-size: 1.6rem;
+      }
+      .content p {
+        font-size: 1rem;
+      }
+      a.back-link {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>도시 속에서 잊혀져가는 것들</h1>
-  </header>
+<header>
+  <h1>도시 속에서 잊혀져가는 것들</h1>
+</header>
 
-  <div class="content">
-    <h2>바람이 지나간 자리</h2>
-    <p>"바람이 머물던 흔적이 벽에 남았다."</p>
-    <p><strong>설치 기간:</strong> 2025.05.10 - 2025.05.17</p>
+<div class="content">
+  <h2>바람이 지나간 자리</h2>
+  <p>"바람이 머물던 흔적이 벽에 남았다."</p>
+  <p><strong>설치 기간:</strong> 2025.05.10 - 2025.05.17</p>
 
-    <div class="image-container">
-      <div class="image-scroll">
-        <img src="../assets/work1-1.png" alt="설치 사진 1">
-        <img src="../assets/work1-2.png" alt="설치 사진 2">
-        <img src="../assets/work1-3.png" alt="설치 사진 3">
-      </div>
+  <div class="image-container">
+    <div class="image-scroll">
+      <img src="../assets/work1-1.png" alt="설치 사진 1">
+      <img src="../assets/work1-2.png" alt="설치 사진 2">
+      <img src="../assets/work1-3.png" alt="설치 사진 3">
     </div>
-
-    <div class="map-container">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.4737564886864!2d126.97572687608032!3d37.378626972087915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b5fd3a22f1807%3A0x9bc35489a1c1e763!2z6rOE7JuQ7JiI7Iig64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1745736687133!5m2!1sko!2skr" 
-        width="100%" 
-        height="300" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-
-    <div id="disqus_thread"></div>
-    <script>
-      var disqus_config = function () {
-        this.page.url = window.location.href;
-        this.page.identifier = window.location.pathname;
-      };
-      (function() {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://city-forgotten.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-      })();
-    </script>
-    <noscript>댓글을 보려면 자바스크립트를 활성화하세요.</noscript>
-
-    <a class="back-link" href="../index.html#works">← 작품 리스트로 돌아가기</a>
   </div>
 
-  <footer>
-    <p>&copy; 2025 도시 속에서 잊혀져가는 것들 Project</p>
-  </footer>
+  <div class="map-container">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.4737564886864!2d126.97572687608032!3d37.378626972087915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b5fd3a22f1807%3A0x9bc35489a1c1e763!2z6rOE7JuQ7JiI7Iig64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1745736687133!5m2!1sko!2skr" 
+      width="100%" 
+      height="300" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = window.location.href;
+      this.page.identifier = window.location.pathname;
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://city-forgotten.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>댓글을 보려면 자바스크립트를 활성화하세요.</noscript>
+
+  <a class="back-link" href="../index.html#works">← 작품 리스트로 돌아가기</a>
+</div>
+
+<footer>
+  <p>&copy; 2025 도시 속에서 잊혀져가는 것들 Project</p>
+</footer>
+
+<script>
+  window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+  });
+</script>
 
 </body>
 </html>
