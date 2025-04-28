@@ -18,9 +18,20 @@
       line-height: 1.6;
       opacity: 0;
       transition: opacity 1.5s ease;
+      position: relative;
+      overflow-x: hidden;
     }
     body.loaded {
       opacity: 1;
+    }
+    #backgroundCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
     }
     header {
       background-color: #f7f7f7;
@@ -115,7 +126,6 @@
       ul li a {
         font-size: 1rem;
       }
-      /* 👇 notice 모바일 최적화 */
       .notice {
         text-align: left;
         padding: 2rem 1.5rem;
@@ -125,7 +135,10 @@
     }
   </style>
 </head>
+
 <body>
+<canvas id="backgroundCanvas"></canvas>
+
 <header>
   <h1>도시 속에서 잊혀져가는 것들</h1>
   <p>일상의 사소한 풍경을 기록하는 거리 예술 프로젝트</p>
@@ -162,46 +175,103 @@
   <section id="about">
     <h2>소개</h2>
     <p><strong>도시 속에서 잊혀져가는 것들</strong>은 우리가 매일 걷고 지나치는 거리, 골목, 벽과 같은 공간을 다시 바라보는 프로젝트입니다. 빠르게 변하는 일상 속에서 무심코 지나치는 장면들, 작은 균열, 희미해진 표식들 — 우리는 그것들을 알아차리지 못한 채 살아갑니다.</p>
-
     <p>이 프로젝트는 그런 사소한 흔적들을 발견하고, 그 위에 『작품』이라는 이름을 붙여 일상과 예술의 경계를 허물고자 합니다. 각기 다른 도시의 벽과 바닥에 설치된 작은 캡션들은, 평범한 풍경을 잠시 멈춰 서서 바라보게 만드는 작은 장치입니다.</p>
-
     <p>이 작업은 『예술은 꼭 특별한 공간에만 존재해야 하는가?』라는 질문에서 시작되었습니다. 예술은 갤러리나 박물관 안에서만 머물지 않아도 됩니다. 때로는 한낮의 볕에 바랜 담벼락에서도, 금이 간 인도의 틈에서도, 세상의 아름다움과 의미는 조용히 피어납니다.</p>
-
     <p><strong>도시 속에서 잊혀져가는 것들</strong>은 그런 일상의 사소한 것들에게 새로운 이름과 이야기를 부여하는 시도입니다. 관객은 작품을 보는 동시에, 자신만의 기억과 풍경을 떠올리게 될 것입니다.</p>
-
     <p><strong>2025년 5월</strong>, 이 작은 프로젝트가 지나간 자리마다, 한 순간이라도 새로운 시선이 머물 수 있기를 바랍니다.</p>
   </section>
 
   <section id="artist">
     <h2>작가 소개</h2>
-
     <p><strong>미녁(아콘리버)</strong><br>
       (<a href="https://www.acornriver.net/" target="_blank" rel="noopener noreferrer">acornriver.net</a>&nbsp;|&nbsp;<a href="https://www.youtube.com/@acornriver" target="_blank" rel="noopener noreferrer">YouTube</a>)
     </p>
-
-    <p>디지털을 기반으로 경계에 서 있는 예술을 탐구합니다.<br>
-    이번 프로젝트에서는 일상 속에 캡션을 설치함으로써, 평범한 풍경이 어떻게 변모하는지를 실험합니다.<br>
-    『작품은 특별한 공간에만 존재해야 하는가?』라는 질문을 출발점으로 삼아, 거리의 벽과 바닥을 새로운 시선으로 바라보는 기획을 했습니다.</p>
-
+    <p>디지털을 기반으로 경계에 서 있는 예술을 탐구합니다.<br> 이번 프로젝트에서는 일상 속에 캡션을 설치함으로써, 평범한 풍경이 어떻게 변모하는지를 실험합니다.<br> 『작품은 특별한 공간에만 존재해야 하는가?』라는 질문을 출발점으로 삼아, 거리의 벽과 바닥을 새로운 시선으로 바라보는 기획을 했습니다.</p>
     <p><strong>다온</strong><br>
       (<a href="https://daonmin.net/" target="_blank" rel="noopener noreferrer">daonmin.net</a>)
     </p>
-
-    <p>익숙한 일상 속에서 특별한 순간을 찾아내려 합니다.<br>
-    소소한 장면 속에 숨겨진 이야기를 발견하고, 그것을 새롭게 바라보는 작업을 이어가고 있습니다.<br>
-    이번 전시에서는 도시의 풍경 속에 깃든 작은 흔적들과 대화를 시도했습니다.</p>
-
+    <p>익숙한 일상 속에서 특별한 순간을 찾아내려 합니다.<br> 소소한 장면 속에 숨겨진 이야기를 발견하고, 그것을 새롭게 바라보는 작업을 이어가고 있습니다.<br> 이번 전시에서는 도시의 풍경 속에 깃든 작은 흔적들과 대화를 시도했습니다.</p>
   </section>
 </main>
 
 <footer>
-  <p>&copy; 2025 도시 속에서 잊혀져가는 것들 프로젝트</p>
+  <p>&copy; 2025 도시 속에서 잊혀져가는 것들 project</p>
 </footer>
 
 <script>
   window.addEventListener('load', () => {
     document.body.classList.add('loaded');
   });
+
+  // 부드러운 입자 + 선 연결
+  const canvas = document.getElementById('backgroundCanvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  for (let i = 0; i < 10; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 8 + 3,
+      radiusSpeed: (Math.random() - 0.5) * 0.05,
+      angle: Math.random() * 2 * Math.PI,
+      speed: Math.random() * 0.3 + 0.05,
+      color: Math.random() > 0.5 ? 'rgba(220,220,220,0.5)' : 'rgba(180,180,180,0.5)'
+    });
+  }
+
+  function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let p of particles) {
+      p.radius += p.radiusSpeed;
+      if (p.radius < 3 || p.radius > 10) p.radiusSpeed *= -1;
+
+      p.x += Math.cos(p.angle) * p.speed;
+      p.y += Math.sin(p.angle) * p.speed;
+      p.angle += (Math.random() - 0.5) * 0.01;
+
+      if (p.x > canvas.width) p.x = 0;
+      if (p.x < 0) p.x = canvas.width;
+      if (p.y > canvas.height) p.y = 0;
+      if (p.y < 0) p.y = canvas.height;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2, false);
+      ctx.fillStyle = p.color;
+      ctx.fill();
+    }
+
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const p1 = particles[i];
+        const p2 = particles[j];
+        const dx = p1.x - p2.x;
+        const dy = p1.y - p2.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 150) {
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = `rgba(200, 200, 200, ${1 - dist / 150})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(drawParticles);
+  }
+
+  drawParticles();
 </script>
 
 </body>
